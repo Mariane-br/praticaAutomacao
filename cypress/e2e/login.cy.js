@@ -13,4 +13,19 @@ describe('login', () => {
 
         cy.wait('@allRequests').its('response.statusCode').should('eq', 200)
     })
+
+    it.only('Login com usuário inválido e senha válida', () => {
+        cy.get('#user-name').type('mariane')
+        cy.get('#password').type('secret_sauce')
+        cy.get('#login-button').click()
+        cy.get('h3[data-test="error"]').should('be.visible')
+    })
+
+    it('Login com usuário válido e senha inválida', () => {
+
+    })
+
+    it('Login com usuário e senha inválidos', () => {
+
+    })
 })
